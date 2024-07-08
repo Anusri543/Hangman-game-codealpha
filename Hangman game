@@ -1,0 +1,33 @@
+import random
+# List of words to guess
+words = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+# Select a random word from the list
+word = random.choice(words)
+# Create a list to store the guessed letters
+guessed = ['_'] * len(word)
+# Set the number of incorrect guesses allowed
+max_incorrect = 5
+# Initialize the number of incorrect guesses
+incorrect = 0
+while True:
+    # Show the current state of the word
+    print(' '.join(guessed))
+    # Ask the user for a letter
+    letter = input('Guess a letter: ')
+    # Check if the letter is in the word
+    if letter in word:
+        # Reveal the letter in the word
+        for i in range(len(word)):
+            if word[i] == letter:
+                guessed[i] = letter
+else:
+        # Increment the number of incorrect guesses
+        incorrect += 1
+    # Check if the word has been completely guessed
+    if '_' not in guessed:
+        print('Congratulations, you won!')
+        break
+    # Check if the maximum number of incorrect guesses has been reached
+    if incorrect >= max_incorrect:
+        print(f'Sorry, you lost! The word was {word}.')
+        break
